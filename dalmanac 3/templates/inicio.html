@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block titulo %}Minha biblioteca | Dalmanac{% endblock %}
+{% block conteudo %}
+<div class="titulo-pagina">
+    <div>
+        <h1>Minha biblioteca</h1>
+        <p>Seus jogos, seu ritmo e seu progresso.</p>
+    </div>
+    <a class="botao" href="{{ url_for('jogo.adicionar') }}">+ Adicionar jogo</a>
+</div>
+
+<form class="filtros" method="GET">
+    <select name="status">
+        <option value="">Todos os status</option>
+        {% for status in ["Quero jogar", "Jogando", "Pausado", "Concluído"] %}
+            <option value="{{ status }}" {% if request.args.get('status') == status %}selected{% endif %}>{{ status }}</option>
+        {% endfor %}
+    </select>
+    <input type="text" name="genero" placeholder="Gênero" value="{{ request.args.get('genero', '') }}">
+    <input type="text" name="plataforma" placeholder="Plataforma" value="{{ request.args.get('plataforma', '') }}">
+    <button type="submit">Filtrar</button>
+    <a href="{{ url_for('jogo.inicio') }}">Limpar</a>
+</form>
+
+{% if jogos %}
+<div class="grade-jogos">
+    {% for jogo in jogos %}
+    <article class="cartao-jogo">
+        <span class="status">{{ jogo.status }}</span>
+        <h2>{{ jogo.titulo }}</h2>
+        <p>{{ jogo.genero }} • {{ jogo.plataforma }}</p>
+        <p>{{ jogo.tempo_jogado }} horas jogadas</p>
+        <div class="barra-progresso"><div style="width: {{ jogo.progresso }}%"></div></div>
+        <small>{{ jogo.progresso }}% concluído</small>
+        <a class="botao" href="{{ url_for('jogo.detalhes', jogo_id=jogo.id) }}">Ver detalhes</a>
+    </article>
+    {% endfor %}
+</div>
+{% else %}
+<div class="vazio">
+    <h2>Sua biblioteca está vazia</h2>
+    <p>Adicione seu primeiro jogo para começar a acompanhar seu progresso.</p>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,142 @@
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    background: #15131d;
+    color: #eeeaf5;
+    font-family: Arial, sans-serif;
+}
+
+a { color: #c6a7ff;
+    text-decoration: none; 
+}
+
+a:hover { text-decoration: underline; }
+
+.cabecalho {
+    background: #201b2b;
+    padding: 20px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #393047;
+}
+
+.logo { color: #c6a7ff;
+    font-weight: bold;
+    letter-spacing: 3px;
+    font-size: 22px;
+}
+
+nav { display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.conteudo { width: 86%;
+    max-width: 1100px;
+    margin: 40px auto;
+}
+
+h1 { font-size: 32px;
+    margin-bottom: 8px;
+}
+
+p { color: #bcb5c9;
+    line-height: 1.5;
+}
+
+button, .botao {
+    background: #8b5cf6;
+    color: white;
+    border: 0;
+    border-radius: 7px;
+    padding: 11px 16px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+}
+
+button:hover, .botao:hover { background: #7544db;
+    text-decoration: none;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 11px;
+    margin: 7px 0 16px;
+    border-radius: 6px;
+    border: 1px solid #494052;
+    background: #211d29;
+    color: white;
+}
+
+label { display: block; color: #d9d2e4; font-size: 14px; }
+
+.caixa-autenticacao, .formulario-pagina {
+    background: #201b2b; padding: 30px; border-radius: 12px;
+    max-width: 480px; margin: 40px auto;
+}
+
+.caixa-autenticacao button, .formulario-pagina button { width: 100%; }
+
+.titulo-pagina { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+
+.filtros { display: grid; grid-template-columns: 1fr 1fr 1fr auto auto; gap: 10px; align-items: center; }
+
+.grade-jogos { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; }
+
+.cartao-jogo, .painel, .detalhes-topo, .vazio {
+    background: #201b2b;
+    border: 1px solid #393047;
+    border-radius: 12px;
+    padding: 22px;
+}
+.cartao-jogo h2 { margin: 14px 0 5px; }
+
+.status { display: inline-block;
+    color: #d6c3ff;
+    background: #392b53;
+    padding: 6px 9px;
+    border-radius: 20px;
+    font-size: 12px; 
+}
+
+.barra-progresso { height: 8px; background: #40394b; border-radius: 10px; overflow: hidden; margin: 12px 0 6px; }
+
+.barra-progresso div { height: 100%; background: #a78bfa; }
+
+.cartao-jogo .botao { margin-top: 16px; }
+
+.detalhes-topo { margin: 20px 0; }
+
+.painel { margin: 18px 0; }
+
+.form-linha { display: flex; gap: 15px; align-items: end; margin-top: 20px; }
+.form-linha div { flex: 1; }
+
+.item-lista { display: flex; justify-content: space-between; gap: 15px; align-items: center; padding: 12px 0; border-bottom: 1px solid #393047; }
+
+.item-lista p { margin: 5px 0; }
+
+.oculto { opacity: .9; }
+
+.formulario-secundario { border-top: 1px solid #393047; margin-top: 22px; padding-top: 15px; }
+
+.botao-pequeno { padding: 8px 11px; }
+
+.botao-perigo { background: #a63f55; }
+
+.mensagem { padding: 12px; border-radius: 7px; margin-bottom: 15px; }
+
+.mensagem.erro { background: #542b38; }
+
+.mensagem.sucesso { background: #244b3b; }
+
+.secundario { margin-top: 10px; }
+
+@media (max-width: 700px) {
+    .cabecalho, .titulo-pagina, .form-linha { flex-direction: column; align-items: stretch; gap: 15px; }
+    .filtros { display: block; }
+    nav { flex-wrap: wrap; margin-top: 12px; }
+    .conteudo { width: 92%; }
+}

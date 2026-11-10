@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block titulo %}Entrar | Dalmanac{% endblock %}
+{% block conteudo %}
+<section class="caixa-autenticacao">
+    <h1>Entre na sua conta</h1>
+    <p>Organize sua biblioteca e acompanhe seu progresso.</p>
+    <form method="POST">
+        <label>E-mail</label>
+        <input type="email" name="email" required>
+        <label>Senha</label>
+        <input type="password" name="senha" required>
+        <button type="submit">Entrar</button>
+    </form>
+    <p>Não possui conta? <a href="{{ url_for('usuario.cadastro') }}">Cadastre-se</a></p>
+</section>
+{% endblock %}

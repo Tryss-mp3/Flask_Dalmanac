@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% if jogo %}
+    {% set titulo_pagina = "Editar jogo" %}
+{% else %}
+    {% set titulo_pagina = "Adicionar jogo" %}
+{% endif %}
+{% block titulo %}{{ titulo_pagina }} | Dalmanac{% endblock %}
+{% block conteudo %}
+<section class="formulario-pagina">
+    <h1>{{ titulo_pagina }}</h1>
+    <form method="POST">
+        <label>Nome do jogo</label>
+        <input name="titulo" maxlength="120" value="{{ jogo.titulo if jogo else '' }}" required>
+
+        <label>Gênero</label>
+        <input name="genero" maxlength="60" value="{{ jogo.genero if jogo else '' }}" placeholder="Ex.: RPG" required>
+
+        <label>Plataforma</label>
+        <input name="plataforma" maxlength="60" value="{{ jogo.plataforma if jogo else '' }}" placeholder="Ex.: PC" required>
+
+        <label>Status</label>
+        <select name="status">
+            {% for status in ["Quero jogar", "Jogando", "Pausado", "Concluído"] %}
+                <option value="{{ status }}" {% if jogo and jogo.status == status %}selected{% endif %}>{{ status }}</option>
+            {% endfor %}
+        </select>
+
+        <label>Descrição</label>
+        <textarea name="descricao" rows="4">{{ jogo.descricao if jogo else '' }}</textarea>
+        <button type="submit">Salvar jogo</button>
+        <a href="{{ url_for('jogo.inicio') }}">Cancelar</a>
+    </form>
+</section>
+{% endblock %}

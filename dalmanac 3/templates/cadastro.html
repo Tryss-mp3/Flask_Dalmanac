@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block titulo %}Cadastro | Dalmanac{% endblock %}
+{% block conteudo %}
+<section class="caixa-autenticacao">
+    <h1>Criar conta</h1>
+    <form method="POST">
+        <label>Nome</label>
+        <input type="text" name="nome" maxlength="100" required>
+        <label>E-mail</label>
+        <input type="email" name="email" required>
+        <label>Senha</label>
+        <input type="password" name="senha" minlength="6" required>
+        <button type="submit">Cadastrar</button>
+    </form>
+    <p>Já possui conta? <a href="{{ url_for('usuario.login') }}">Entrar</a></p>
+</section>
+{% endblock %}
